@@ -1,0 +1,515 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     20531,        507]
+NotebookOptionsPosition[     16833,        434]
+NotebookOutlinePosition[     17268,        451]
+CellTagsIndexPosition[     17225,        448]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Wonjoon Koh\[CloseCurlyQuote]s Project Proposal ", "Title",
+ CellChangeTimes->{{3.9711385192714767`*^9, 3.971138524624538*^9}, {
+  3.97113861014038*^9, 3.9711386217483053`*^9}, {3.9711540706727257`*^9, 
+  3.971154072099045*^9}},ExpressionUUID->"e12da4bc-b79f-4e9f-98fc-\
+6bb774b6ed3b"],
+
+Cell["\<\
+[Tentative Project Title]: The best regularization algorithms on image \
+classification using neural networks. \
+\>", "Subtitle",
+ CellChangeTimes->{{3.9711386041062*^9, 3.971138608006146*^9}, {
+  3.97113940182364*^9, 3.971139403131096*^9}, {3.9711540761402206`*^9, 
+  3.971154088251215*^9}, {3.9711549333695774`*^9, 3.9711549341540737`*^9}, {
+  3.9711550665099335`*^9, 3.9711550935268726`*^9}, {3.9711568359555016`*^9, 
+  3.9711568561312256`*^9}},ExpressionUUID->"93d2020f-c475-4d57-921a-\
+ea0f140401cb"],
+
+Cell["[Your Name]: Wonjoon Koh", "Author",
+ CellChangeTimes->{{3.971138532115242*^9, 3.971138533366047*^9}, {
+  3.971139397911092*^9, 3.9711394000862923`*^9}, {3.9711536175870457`*^9, 
+  3.97115361994742*^9}},ExpressionUUID->"6fbc8446-a3e5-488d-8e19-\
+85c1289aba37"],
+
+Cell[TextData[{
+ StyleBox["Abstract\n",
+  FontWeight->"Bold"],
+ "[Add your abstract here]: \n",
+ StyleBox["Regularization is used to avoid overfitting problems so that \
+models can perform better on general cases.\nThe project aims to explore a \
+variety of ",
+  FontSlant->"Plain"],
+ StyleBox["Label Regularization ",
+  FontWeight->"Bold",
+  FontSlant->"Plain"],
+ StyleBox["methods, which are not often preferred compared to other popular \
+algorithms.",
+  FontSlant->"Plain"],
+ StyleBox["\nIn the end, it will compare the proposed methods with other \
+well-known methods, like ",
+  FontSlant->"Plain"],
+ StyleBox["data augmentation",
+  FontWeight->"Bold",
+  FontSlant->"Plain"],
+ StyleBox[" or ",
+  FontSlant->"Plain"],
+ StyleBox["internal changes",
+  FontWeight->"Bold",
+  FontSlant->"Plain"]
+}], "Abstract",
+ CellChangeTimes->{{3.971138585304668*^9, 3.971138592568015*^9}, {
+  3.971139382695037*^9, 3.9711393960745173`*^9}, {3.971140224982645*^9, 
+  3.971140228991625*^9}, {3.9711536226580696`*^9, 3.971153622753725*^9}, {
+  3.9711541146049576`*^9, 3.9711541347598534`*^9}, {3.9711550971574497`*^9, 
+  3.971155205026516*^9}, {3.9711566970527916`*^9, 3.9711567107980137`*^9}, {
+  3.971156864603174*^9, 3.9711568677965126`*^9}, {3.971685254657305*^9, 
+  3.9716852931709957`*^9}, {3.971685542227991*^9, 3.9716855531777897`*^9}, {
+  3.9717581339578743`*^9, 
+  3.9717582293688755`*^9}},ExpressionUUID->"d52d0238-5e58-4b17-820c-\
+6bec2238577f"],
+
+Cell[CellGroupData[{
+
+Cell["Instructions", "Chapter",
+ CellChangeTimes->{{3.971138595807581*^9, 
+  3.971138636372785*^9}},ExpressionUUID->"a0b33454-de75-4b0f-b777-\
+ae76d4fcbd8c"],
+
+Cell[TextData[{
+ "Carefully review this ",
+ ButtonBox["project guideline",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://docs.google.com/document/d/1Gs5Mu6D2cmcktuLkKe4gH_C9rscy_\
+mgIgs5JdbTVgu4/edit?tab=t.f9jgi0b92ep8"], None},
+  ButtonNote->
+   "https://docs.google.com/document/d/1Gs5Mu6D2cmcktuLkKe4gH_C9rscy_\
+mgIgs5JdbTVgu4/edit?tab=t.f9jgi0b92ep8"],
+ ", and complete this project proposal by November 10."
+}], "Text",
+ CellChangeTimes->{{3.9711532391075974`*^9, 
+  3.97115329980221*^9}},ExpressionUUID->"bcceed07-99d0-45e4-90d9-\
+602c7bb002f9"],
+
+Cell[TextData[{
+ "Refer to this",
+ ButtonBox[" sample research proposal",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://advising.engineering.osu.edu/media/document/2025-05-05/cse-\
+sample-proposal-1.pdf"], None},
+  ButtonNote->
+   "https://advising.engineering.osu.edu/media/document/2025-05-05/cse-sample-\
+proposal-1.pdf"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.971140527094616*^9, 3.97114054767721*^9}, {
+  3.971153168859859*^9, 3.9711531699213448`*^9}, {3.971153211281823*^9, 
+  3.971153232705419*^9}},ExpressionUUID->"0e28269d-33ad-4ca6-8716-\
+995db53b9add"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["1. Background and Motivation", "Chapter",
+ CellChangeTimes->{{3.9711390520376043`*^9, 3.971139058660486*^9}, {
+  3.971139272376093*^9, 3.971139275781925*^9}, {3.9711402370268908`*^9, 
+  3.971140240062428*^9}},ExpressionUUID->"2eb2280c-766c-4d03-bb2e-\
+2bc21ad8e97f"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+1.1 Identification of specific problem area (e.g., what is it, why it is \
+important). \
+\>", "Section",
+ CellChangeTimes->{{3.97113906257034*^9, 3.97113907208856*^9}, {
+  3.9711395628976793`*^9, 3.9711395652049437`*^9}, {3.971140046749096*^9, 
+  3.9711400545780687`*^9}},ExpressionUUID->"3e9205ec-27bc-4545-ba25-\
+306c0c3ea499"],
+
+Cell[TextData[{
+ "\nRegularization is an important technique to prevent overfitting problem - \
+where a model is trained too much on the training set that it does not \
+perform as expected in new data. \nThere are different regularization \
+algorithms, but ",
+ StyleBox["Label Regularization ",
+  FontWeight->"Bold"],
+ "is not as popular. \nThe paper aims to explore existing and novel ",
+ StyleBox["Label Regularization",
+  FontWeight->"Bold"],
+ " algorithms. "
+}], "Text",
+ CellChangeTimes->{{3.9711552244976635`*^9, 3.971155310996292*^9}, {
+  3.9711555410124683`*^9, 3.971155620557663*^9}, {3.971155836390234*^9, 
+  3.971155850416424*^9}, {3.971685302198944*^9, 3.9716853854300594`*^9}, {
+  3.971685557818119*^9, 3.9716855662729664`*^9}, {3.971761544908243*^9, 
+  3.971761588690338*^9}},ExpressionUUID->"b34a085f-6e55-eb4b-9a69-\
+e3e4851c098a"],
+
+Cell["", "Text",ExpressionUUID->"f5ba9a93-8aab-4cc1-8278-88cffc6bac2e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["1.2 Literature Review (An overview of what we know)", "Section",
+ CellChangeTimes->{{3.9711387193835077`*^9, 3.9711387240800867`*^9}, 
+   3.9711390745205317`*^9, 3.971139594213081*^9, {3.971140346635214*^9, 
+   3.971140362691628*^9}},ExpressionUUID->"bc9b44fb-bbdb-4c7d-b13c-\
+5513e3db9034"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+What has previous research found out about the problem? What methods and \
+samples did they use? What are your main variables of interest and what do we \
+know about them from previous research (include conceptual definitions of \
+terms)? Add critiques of other research (i.e., strengths and weaknesses of \
+previous research). \
+\>", "Subsection",
+ CellChangeTimes->{
+  3.971140349024642*^9, 3.9716853995085545`*^9, {3.9716864655362396`*^9, 
+   3.9716864680760975`*^9}, 
+   3.9716865367310123`*^9},ExpressionUUID->"a76101af-8fc4-449d-8ee6-\
+e487ca4046a0"],
+
+Cell[TextData[{
+ "1. First source\nRegularization methods are divided into three categories: ",
+ StyleBox["Data Augmentation",
+  FontWeight->"Bold"],
+ ", ",
+ StyleBox["Internal Changes",
+  FontWeight->"Bold"],
+ " (modifying features), and ",
+ StyleBox["Label Regularization",
+  FontWeight->"Bold"],
+ " (transforming labels of inputs).\n- About 44% of surveyed works use ",
+ StyleBox["data augmentation",
+  FontWeight->"Bold"],
+ " methods. This is due to the ease of changing parameters in CNN\
+\[CloseCurlyQuote]s input. (rotating, translation, scaling, cropping, ...)\n- \
+",
+ StyleBox["Internal Changes",
+  FontWeight->"Bold"],
+ " was the second most used method, and Dropout was dominant in this \
+category. (dropout, batch normalization, weight decay, ...)\n- Lack of ",
+ StyleBox["Label Research: ",
+  FontWeight->"Bold"],
+ "There are little work dedicated to this category.  (label smoothing, \
+confidence penalty, ...)\n\nLabel is the target value (output) that a model \
+is trained to predict. Labels are treated as a \[OpenCurlyDoubleQuote]truth\
+\[CloseCurlyDoubleQuote], the one that shouldn\[CloseCurlyQuote]t be altered. \
+ \n",
+ StyleBox["Label Regularization ",
+  FontWeight->"Bold"],
+ "deliberately changes these labels, which risks distortion of true \
+information. \nIt is also harder to explain what happens when labels are \
+manipulated.\nMoreover, DL frameworks, such as Tensorflow and PyTorch, \
+natively supports ",
+ StyleBox["Data Augmentation ",
+  FontWeight->"Bold"],
+ "and ",
+ StyleBox["Internal Changes, ",
+  FontWeight->"Bold"],
+ "but ",
+ StyleBox["Label Regularization ",
+  FontWeight->"Bold"],
+ "has to be implemented manually.\n\nConsequently, pure label regularization \
+methods are scarce, but often mixed with other algorithms. (Mixup, CutMix, \
+...)\n\n2.  Second source\nThe paper proposes a new  ",
+ StyleBox["Label Regularization",
+  FontWeight->"Bold"],
+ " method - Adaptive Label Regularization, where the model uses its past \
+errors to optimize label representation. \nThe evaluation is conducted on \
+CIFAR-100/CIFAR-10/ImageNet datasets for image recognition tests.\n\n3. \n\
+Traditional ",
+ StyleBox["Label Smoothing ",
+  FontWeight->"Bold"],
+ "the level of smoothing is uniform for all training samples. As a result, \
+some training sets are regularized too much, while the others are not \
+properly regularized. \nThe authors suggest ",
+ StyleBox["Structural Label Smoothing (SLS), ",
+  FontWeight->"Bold"],
+ "or data-dependent label smoothing, where the strength of regularization \
+differs based on how much "
+}], "Text",
+ CellChangeTimes->{{3.971686541600834*^9, 3.971686545703642*^9}, {
+   3.971686581851261*^9, 3.971686832769125*^9}, {3.9716868785433006`*^9, 
+   3.9716869246182613`*^9}, {3.9716870036373158`*^9, 3.971687032226761*^9}, {
+   3.971687238807951*^9, 3.971687374723135*^9}, {3.9716874309532185`*^9, 
+   3.9716875259056664`*^9}, {3.971687566095112*^9, 3.9716876027932415`*^9}, {
+   3.971687641921797*^9, 3.9716877074831753`*^9}, {3.971757866494343*^9, 
+   3.971757868297964*^9}, {3.971759498435795*^9, 3.9717595022179203`*^9}, {
+   3.971759601103525*^9, 3.9717596622666264`*^9}, {3.971759714064169*^9, 
+   3.971759811264906*^9}, 3.9717605563031216`*^9, {3.971760588058281*^9, 
+   3.9717607499925594`*^9}, {3.971760888795521*^9, 
+   3.971760903621086*^9}},ExpressionUUID->"0400c196-7b4c-794c-bc70-\
+c0da274af7e6"],
+
+Cell["", "Text",ExpressionUUID->"73d62128-ad4d-4098-a4a7-5b60822a149c"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+1.3 An overview of what we don\[CloseCurlyQuote]t know (i.e., gap/gaps in the \
+literature that you plan to address in your project). \
+\>", "Section",
+ CellChangeTimes->{{3.9711387263060827`*^9, 3.971138737139615*^9}, {
+   3.971139078413579*^9, 3.971139080530611*^9}, 
+   3.971139627247904*^9},ExpressionUUID->"67111a7b-5613-420d-9790-\
+f29666564624"],
+
+Cell["\<\
+How does proposed label regularization method perform when mixed with \
+existing ones? \
+\>", "Text",
+ CellChangeTimes->{{3.971761449442028*^9, 3.971761456067871*^9}, {
+  3.9717615066167145`*^9, 
+  3.971761525619362*^9}},ExpressionUUID->"8f100254-8088-5241-a652-\
+74b2bb8a558e"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.97176142901684*^9, 
+  3.971761429832163*^9}},ExpressionUUID->"864f8057-9f5b-9840-afef-\
+b3c37e98e2a5"],
+
+Cell["", "Text",ExpressionUUID->"7de3e0b6-63b9-4fae-852c-489cb2516aa2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+1.4 Statement of the purpose of your study and research questions. Relate \
+these to the gap in the literature you are addressing. Include hypotheses, if \
+applicable. \
+\>", "Section",
+ CellChangeTimes->{{3.9711396332707*^9, 3.971139647228324*^9}, {
+  3.971140378067453*^9, 
+  3.971140385299425*^9}},ExpressionUUID->"72901f68-2643-42f4-a340-\
+9128ee9dff36"],
+
+Cell["", "Text",
+ CellChangeTimes->{
+  3.9711403823872843`*^9},ExpressionUUID->"821b01b2-cda7-484a-82f4-\
+1d1b37b3c589"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2. Methodology", "Chapter",
+ CellChangeTimes->{{3.9711387391410313`*^9, 3.971138748999713*^9}, {
+   3.9711391565239*^9, 3.971139159840412*^9}, {3.971139279115116*^9, 
+   3.97113928685388*^9}, {3.971140076370674*^9, 3.971140086083116*^9}, {
+   3.9711402478511133`*^9, 3.97114024921381*^9}, 
+   3.971140714802504*^9},ExpressionUUID->"fc7fa6be-e29e-47e2-b3bf-\
+5d1fa0e1e109"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+You should discuss how you plan to investigate your research questions. If \
+you are using well-known methodologies, then references to these and/or other \
+uses of these will demonstrate your understanding of the field. If not, then \
+you should justify why you need to develop your own methodology. What data \
+will you need and how will you obtain and analyse them?\
+\>", "Section",
+ CellChangeTimes->{
+  3.9711408733045483`*^9, {3.971761726065727*^9, 
+   3.9717617268660183`*^9}},ExpressionUUID->"1f343bad-e2a9-4451-aaf4-\
+d482856b72a7"],
+
+Cell["\<\
+Just like the papers, I aim to use CIFAR-100/CIFAR-10 and ImageNet dataset, \
+which are free for non-commercial usage. \
+\>", "Text",
+ CellChangeTimes->{{3.971761617480093*^9, 3.971761635283806*^9}, {
+  3.971761667734577*^9, 3.9717616708889313`*^9}, {3.971761729597231*^9, 
+  3.9717617832210064`*^9}},ExpressionUUID->"521bec7b-8530-4042-b5cb-\
+bf44c0f35d97"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+1. Construct a neural network model (CNN).  (Or, use Named CNN models)
+2. Explore and evaluate existing Label Reg. methods (label smoothing, ...)
+3. Implement and assess the proposed algorithms 
+4. Compare\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.9717617853266277`*^9, 3.9717618732891884`*^9}, {
+  3.971762216051504*^9, 3.971762227522728*^9}, {3.971762465295124*^9, 
+  3.971762473213297*^9}},ExpressionUUID->"cab08ce9-5cf6-b148-a4d9-\
+3c3308c0f666"],
+
+Cell["", "Text",ExpressionUUID->"daf7f05b-44f8-4b27-851a-fd6ee1cbf549"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["3. Relevant Wolfram Language Functions", "Chapter",
+ CellChangeTimes->{{3.971140761317418*^9, 3.971140771982131*^9}, {
+  3.971140900224305*^9, 
+  3.971140900558613*^9}},ExpressionUUID->"858f0904-16fc-4f20-90f9-\
+c74284c880ad"],
+
+Cell[CellGroupData[{
+
+Cell["[Add any Wolfram Functions relevant to your research] ", "Subsubsection",
+ CellChangeTimes->{{3.971140791129222*^9, 3.971140791504671*^9}, {
+  3.971140896859627*^9, 3.97114091009604*^9}, {3.971762288682268*^9, 
+  3.9717622971256886`*^9}},ExpressionUUID->"5ad33a47-869f-4d6b-ade0-\
+3986b367eb1a"],
+
+Cell[TextData[{
+ "Wolfram\[CloseCurlyQuote]s Neural Network documents: \
+https://reference.wolfram.com/language/guide/NeuralNetworkConstruction.html\n\
+CovolutionLayer: \
+https://reference.wolfram.com/language/ref/ConvolutionLayer.html\nNetModel: \
+https://reference.wolfram.com/language/ref/NetModel.html  => ",
+ StyleBox["Obtain Named Models\n",
+  FontWeight->"Bold",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.9717622986715927`*^9, 3.9717623432281265`*^9}, {
+  3.971762408885805*^9, 
+  3.9717624416283836`*^9}},ExpressionUUID->"77e4f7b3-2323-704b-9ba2-\
+d2053dbc08b1"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["4. Bibliography", "Chapter",
+ CellChangeTimes->{{3.971138750692708*^9, 3.9711387559822407`*^9}, {
+  3.971139161183374*^9, 3.971139161324197*^9}, {3.971139293907413*^9, 
+  3.971139295972382*^9}, {3.9711400726314487`*^9, 3.97114007451021*^9}, {
+  3.971140901568679*^9, 
+  3.971140901772911*^9}},ExpressionUUID->"f4fb8a32-6adf-4047-be26-\
+3acfb5f2689b"],
+
+Cell["\<\
+[Properly cite all your sources]
+1. Kammoun, A., Slama, R., Tabia, H., Ouni, T., & Abid, M. (2022). Generative \
+Adversarial Networks for face generation: A survey. ACM Computing Surveys. \
+https://doi.org/10.1145/1122445.1122456
+
+2. Ding, Q., Wu, S., Sun, H., Guo, J., & Xia, S. (2022). Adaptive \
+regularization of labels. arXiv (Cornell University). \
+https://doi.org/10.48550/arxiv.1908.05474
+
+3. Li, W., Dasarathy, G. &amp; Berisha, V.. (2020). Regularization via \
+Structural Label Smoothing. <i>Proceedings of the Twenty Third International \
+Conference on Artificial Intelligence and Statistics</i>, in <i>Proceedings \
+of Machine Learning Research</i> 108:1453-1463 Available from \
+https://proceedings.mlr.press/v108/li20e.html.\
+\>", "Text",
+ CellChangeTimes->{{3.971139298405306*^9, 3.971139303826995*^9}, 
+   3.971139368087921*^9, {3.971140883114059*^9, 3.971140894047068*^9}, {
+   3.9716856150975323`*^9, 3.9716856257382183`*^9}, {3.9716856596076355`*^9, 
+   3.971685660939678*^9}, {3.971685704071409*^9, 3.971685706524267*^9}, 
+   3.9716879223760433`*^9, {3.9717585017765236`*^9, 3.971758508062708*^9}, {
+   3.971758839554367*^9, 3.9717588417924004`*^9}, {3.9717593000711193`*^9, 
+   3.971759302091423*^9}, {3.9717605436585407`*^9, 3.971760545456913*^9}, {
+   3.972100017938032*^9, 
+   3.9721000181758804`*^9}},ExpressionUUID->"fafda15a-f104-43ac-a5c2-\
+bf8f9cb0cc39"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1920, 1011.75},
+WindowMargins->{{-6, Automatic}, {Automatic, -6}},
+Magnification:>0.8 Inherited,
+FrontEndVersion->"14.3 \:c758 Microsoft Windows (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f29736e8-8cf2-4306-83df-25e337e53a14"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 291, 4, 77, "Title",ExpressionUUID->"e12da4bc-b79f-4e9f-98fc-6bb774b6ed3b"],
+Cell[870, 28, 515, 9, 41, "Subtitle",ExpressionUUID->"93d2020f-c475-4d57-921a-ea0f140401cb"],
+Cell[1388, 39, 266, 4, 24, "Author",ExpressionUUID->"6fbc8446-a3e5-488d-8e19-85c1289aba37"],
+Cell[1657, 45, 1442, 35, 118, "Abstract",ExpressionUUID->"d52d0238-5e58-4b17-820c-6bec2238577f"],
+Cell[CellGroupData[{
+Cell[3124, 84, 157, 3, 54, "Chapter",ExpressionUUID->"a0b33454-de75-4b0f-b777-ae76d4fcbd8c"],
+Cell[3284, 89, 564, 14, 27, "Text",ExpressionUUID->"bcceed07-99d0-45e4-90d9-602c7bb002f9"],
+Cell[3851, 105, 577, 15, 27, "Text",ExpressionUUID->"0e28269d-33ad-4ca6-8716-995db53b9add"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4465, 125, 272, 4, 54, "Chapter",ExpressionUUID->"2eb2280c-766c-4d03-bb2e-2bc21ad8e97f"],
+Cell[CellGroupData[{
+Cell[4762, 133, 339, 7, 52, "Section",ExpressionUUID->"3e9205ec-27bc-4545-ba25-306c0c3ea499"],
+Cell[5104, 142, 847, 17, 79, "Text",ExpressionUUID->"b34a085f-6e55-eb4b-9a69-e3e4851c098a"],
+Cell[5954, 161, 71, 0, 27, "Text",ExpressionUUID->"f5ba9a93-8aab-4cc1-8278-88cffc6bac2e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6062, 166, 297, 4, 52, "Section",ExpressionUUID->"bc9b44fb-bbdb-4c7d-b13c-5513e3db9034"],
+Cell[CellGroupData[{
+Cell[6384, 174, 566, 11, 63, "Subsection",ExpressionUUID->"a76101af-8fc4-449d-8ee6-e487ca4046a0"],
+Cell[6953, 187, 3376, 71, 359, "Text",ExpressionUUID->"0400c196-7b4c-794c-bc70-c0da274af7e6"],
+Cell[10332, 260, 71, 0, 27, "Text",ExpressionUUID->"73d62128-ad4d-4098-a4a7-5b60822a149c"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10452, 266, 362, 7, 52, "Section",ExpressionUUID->"67111a7b-5613-420d-9790-f29666564624"],
+Cell[10817, 275, 288, 7, 27, "Text",ExpressionUUID->"8f100254-8088-5241-a652-74b2bb8a558e"],
+Cell[11108, 284, 151, 3, 22, "Input",ExpressionUUID->"864f8057-9f5b-9840-afef-b3c37e98e2a5"],
+Cell[11262, 289, 71, 0, 27, "Text",ExpressionUUID->"7de3e0b6-63b9-4fae-852c-489cb2516aa2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11370, 294, 368, 8, 52, "Section",ExpressionUUID->"72901f68-2643-42f4-a340-9128ee9dff36"],
+Cell[11741, 304, 120, 3, 27, "Text",ExpressionUUID->"821b01b2-cda7-484a-82f4-1d1b37b3c589"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11910, 313, 378, 6, 54, "Chapter",ExpressionUUID->"fc7fa6be-e29e-47e2-b3bf-5d1fa0e1e109"],
+Cell[CellGroupData[{
+Cell[12313, 323, 551, 10, 82, "Section",ExpressionUUID->"1f343bad-e2a9-4451-aaf4-d482856b72a7"],
+Cell[12867, 335, 368, 7, 27, "Text",ExpressionUUID->"521bec7b-8530-4042-b5cb-bf44c0f35d97"],
+Cell[CellGroupData[{
+Cell[13260, 346, 463, 9, 94, "Subsubsection",ExpressionUUID->"cab08ce9-5cf6-b148-a4d9-3c3308c0f666"],
+Cell[13726, 357, 71, 0, 27, "Text",ExpressionUUID->"daf7f05b-44f8-4b27-851a-fd6ee1cbf549"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13858, 364, 232, 4, 54, "Chapter",ExpressionUUID->"858f0904-16fc-4f20-90f9-c74284c880ad"],
+Cell[CellGroupData[{
+Cell[14115, 372, 301, 4, 35, "Subsubsection",ExpressionUUID->"5ad33a47-869f-4d6b-ade0-3986b367eb1a"],
+Cell[14419, 378, 585, 13, 79, "Text",ExpressionUUID->"77e4f7b3-2323-704b-9ba2-d2053dbc08b1"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15053, 397, 356, 6, 54, "Chapter",ExpressionUUID->"f4fb8a32-6adf-4047-be26-3acfb5f2689b"],
+Cell[15412, 405, 1393, 25, 114, "Text",ExpressionUUID->"fafda15a-f104-43ac-a5c2-bf8f9cb0cc39"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
