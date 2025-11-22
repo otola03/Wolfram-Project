@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     21055,        514]
-NotebookOptionsPosition[     17364,        441]
-NotebookOutlinePosition[     17791,        458]
-CellTagsIndexPosition[     17748,        455]
+NotebookDataLength[     20169,        483]
+NotebookOptionsPosition[     16876,        416]
+NotebookOutlinePosition[     17313,        433]
+CellTagsIndexPosition[     17270,        430]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -48,25 +48,19 @@ Cell[TextData[{
   FontWeight->"Bold"],
  "[Add your abstract here]: \n",
  StyleBox["Regularization is used to avoid overfitting problems so that \
-models can perform better on general cases.\nThe project aims to explore a \
-variety of ",
+models can perform better on general cases.\nLabel Regularization is often \
+not as preferred compared to other popular methods, such as Data \
+Augmentation. \nThus, there needs more study on this subject. This notebook \
+aims to explore novel approaches to Label Regularization, specifically ",
   FontSlant->"Plain"],
- StyleBox["Label Regularization ",
-  FontWeight->"Bold",
+ StyleBox["Structural Label Smoothing (SLS)",
+  FontSlant->"Italic"],
+ StyleBox[" and ",
   FontSlant->"Plain"],
- StyleBox["methods, which are not often preferred compared to other popular \
-algorithms.\nIn the end, it will compare the unpopular methods with other \
-preferred methods, like ",
-  FontSlant->"Plain"],
- StyleBox["data augmentation",
-  FontWeight->"Bold",
-  FontSlant->"Plain"],
- StyleBox[" or ",
-  FontSlant->"Plain"],
- StyleBox["internal changes ",
-  FontWeight->"Bold",
-  FontSlant->"Plain"],
- StyleBox["in image classification task using CNN.",
+ StyleBox["Adaptive Label Regularization (ALR) ",
+  FontSlant->"Italic"],
+ StyleBox["proposed by the researchers. \nFinally, the evaluation will be \
+based on a image classification task of CIFAR-100 dataset with a basic CNN.",
   FontSlant->"Plain"]
 }], "Abstract",
  CellChangeTimes->{{3.971138585304668*^9, 3.971138592568015*^9}, {
@@ -77,7 +71,8 @@ preferred methods, like ",
   3.971156864603174*^9, 3.9711568677965126`*^9}, {3.971685254657305*^9, 
   3.9716852931709957`*^9}, {3.971685542227991*^9, 3.9716855531777897`*^9}, {
   3.9717581339578743`*^9, 3.9717582293688755`*^9}, {3.972364701734138*^9, 
-  3.97236474670123*^9}},ExpressionUUID->"d52d0238-5e58-4b17-820c-\
+  3.97236474670123*^9}, {3.972770182997652*^9, 
+  3.9727702218979454`*^9}},ExpressionUUID->"d52d0238-5e58-4b17-820c-\
 6bec2238577f"],
 
 Cell[CellGroupData[{
@@ -150,14 +145,15 @@ algorithms, but ",
  "is not as popular. \nThe paper aims to explore existing and novel ",
  StyleBox["Label Regularization",
   FontWeight->"Bold"],
- " algorithms and understand their properties. "
+ " algorithms and understand their mechanisms."
 }], "Text",
  CellChangeTimes->{{3.9711552244976635`*^9, 3.971155310996292*^9}, {
   3.9711555410124683`*^9, 3.971155620557663*^9}, {3.971155836390234*^9, 
   3.971155850416424*^9}, {3.971685302198944*^9, 3.9716853854300594`*^9}, {
   3.971685557818119*^9, 3.9716855662729664`*^9}, {3.971761544908243*^9, 
-  3.971761588690338*^9}, {3.972364762813593*^9, 
-  3.972364776235815*^9}},ExpressionUUID->"b34a085f-6e55-eb4b-9a69-\
+  3.971761588690338*^9}, {3.972364762813593*^9, 3.972364776235815*^9}, {
+  3.972770358940975*^9, 
+  3.972770362536707*^9}},ExpressionUUID->"b34a085f-6e55-eb4b-9a69-\
 e3e4851c098a"],
 
 Cell["", "Text",ExpressionUUID->"f5ba9a93-8aab-4cc1-8278-88cffc6bac2e"]
@@ -275,39 +271,18 @@ literature that you plan to address in your project). \
 f29666564624"],
 
 Cell["\<\
-What limitations do Label Regularizations have? Why are they not popular? \
-What happens when it\[CloseCurlyQuote]s used along other popular ones?\
+Can we quantify the distortion of label smoothing?
+What mechanism lies behind the Strutural Label Smoothing and Adaptive Label \
+Regularization? 
+How do they differ in terms of performance compared to the traditional \
+Uniform Label Smoothing (ULS)?\
 \>", "Text",
  CellChangeTimes->{{3.971761449442028*^9, 3.971761456067871*^9}, {
   3.9717615066167145`*^9, 3.971761525619362*^9}, {3.972364788730575*^9, 
-  3.9723647978744917`*^9}, {3.972364834631421*^9, 
-  3.972364871300557*^9}},ExpressionUUID->"8f100254-8088-5241-a652-\
-74b2bb8a558e"],
-
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.97176142901684*^9, 
-  3.971761429832163*^9}},ExpressionUUID->"864f8057-9f5b-9840-afef-\
-b3c37e98e2a5"],
-
-Cell["", "Text",ExpressionUUID->"7de3e0b6-63b9-4fae-852c-489cb2516aa2"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["\<\
-1.4 Statement of the purpose of your study and research questions. Relate \
-these to the gap in the literature you are addressing. Include hypotheses, if \
-applicable. \
-\>", "Section",
- CellChangeTimes->{{3.9711396332707*^9, 3.971139647228324*^9}, {
-  3.971140378067453*^9, 
-  3.971140385299425*^9}},ExpressionUUID->"72901f68-2643-42f4-a340-\
-9128ee9dff36"],
-
-Cell["", "Text",
- CellChangeTimes->{
-  3.9711403823872843`*^9},ExpressionUUID->"821b01b2-cda7-484a-82f4-\
-1d1b37b3c589"]
+  3.9723647978744917`*^9}, {3.972364834631421*^9, 3.972364871300557*^9}, {
+  3.9727702461196136`*^9, 
+  3.972770346037258*^9}},ExpressionUUID->"8f100254-8088-5241-a652-\
+74b2bb8a558e"]
 }, Open  ]]
 }, Open  ]],
 
@@ -440,9 +415,9 @@ bf8f9cb0cc39"]
 }, Open  ]]
 },
 WindowSize->{1920, 1011.75},
-WindowMargins->{{-6, Automatic}, {Automatic, -6}},
+WindowMargins->{{Automatic, 1914}, {Automatic, -6}},
 Magnification:>0.8 Inherited,
-FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+FrontEndVersion->"14.3 \:c758 Microsoft Windows (64-bit) (July 8, 2025)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"f29736e8-8cf2-4306-83df-25e337e53a14"
 ]
@@ -461,59 +436,53 @@ Cell[CellGroupData[{
 Cell[576, 22, 291, 4, 77, "Title",ExpressionUUID->"e12da4bc-b79f-4e9f-98fc-6bb774b6ed3b"],
 Cell[870, 28, 515, 9, 41, "Subtitle",ExpressionUUID->"93d2020f-c475-4d57-921a-ea0f140401cb"],
 Cell[1388, 39, 266, 4, 24, "Author",ExpressionUUID->"6fbc8446-a3e5-488d-8e19-85c1289aba37"],
-Cell[1657, 45, 1527, 35, 118, "Abstract",ExpressionUUID->"d52d0238-5e58-4b17-820c-6bec2238577f"],
+Cell[1657, 45, 1593, 30, 136, "Abstract",ExpressionUUID->"d52d0238-5e58-4b17-820c-6bec2238577f"],
 Cell[CellGroupData[{
-Cell[3209, 84, 157, 3, 54, "Chapter",ExpressionUUID->"a0b33454-de75-4b0f-b777-ae76d4fcbd8c"],
-Cell[3369, 89, 564, 14, 27, "Text",ExpressionUUID->"bcceed07-99d0-45e4-90d9-602c7bb002f9"],
-Cell[3936, 105, 577, 15, 27, "Text",ExpressionUUID->"0e28269d-33ad-4ca6-8716-995db53b9add"]
+Cell[3275, 79, 157, 3, 54, "Chapter",ExpressionUUID->"a0b33454-de75-4b0f-b777-ae76d4fcbd8c"],
+Cell[3435, 84, 564, 14, 27, "Text",ExpressionUUID->"bcceed07-99d0-45e4-90d9-602c7bb002f9"],
+Cell[4002, 100, 577, 15, 27, "Text",ExpressionUUID->"0e28269d-33ad-4ca6-8716-995db53b9add"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4550, 125, 272, 4, 54, "Chapter",ExpressionUUID->"2eb2280c-766c-4d03-bb2e-2bc21ad8e97f"],
+Cell[4616, 120, 272, 4, 54, "Chapter",ExpressionUUID->"2eb2280c-766c-4d03-bb2e-2bc21ad8e97f"],
 Cell[CellGroupData[{
-Cell[4847, 133, 339, 7, 52, "Section",ExpressionUUID->"3e9205ec-27bc-4545-ba25-306c0c3ea499"],
-Cell[5189, 142, 928, 18, 79, "Text",ExpressionUUID->"b34a085f-6e55-eb4b-9a69-e3e4851c098a"],
-Cell[6120, 162, 71, 0, 27, "Text",ExpressionUUID->"f5ba9a93-8aab-4cc1-8278-88cffc6bac2e"]
+Cell[4913, 128, 339, 7, 52, "Section",ExpressionUUID->"3e9205ec-27bc-4545-ba25-306c0c3ea499"],
+Cell[5255, 137, 976, 19, 79, "Text",ExpressionUUID->"b34a085f-6e55-eb4b-9a69-e3e4851c098a"],
+Cell[6234, 158, 71, 0, 27, "Text",ExpressionUUID->"f5ba9a93-8aab-4cc1-8278-88cffc6bac2e"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6228, 167, 297, 4, 52, "Section",ExpressionUUID->"bc9b44fb-bbdb-4c7d-b13c-5513e3db9034"],
+Cell[6342, 163, 297, 4, 52, "Section",ExpressionUUID->"bc9b44fb-bbdb-4c7d-b13c-5513e3db9034"],
 Cell[CellGroupData[{
-Cell[6550, 175, 566, 11, 63, "Subsection",ExpressionUUID->"a76101af-8fc4-449d-8ee6-e487ca4046a0"],
-Cell[7119, 188, 3376, 71, 359, "Text",ExpressionUUID->"0400c196-7b4c-794c-bc70-c0da274af7e6"],
-Cell[10498, 261, 71, 0, 27, "Text",ExpressionUUID->"73d62128-ad4d-4098-a4a7-5b60822a149c"]
+Cell[6664, 171, 566, 11, 63, "Subsection",ExpressionUUID->"a76101af-8fc4-449d-8ee6-e487ca4046a0"],
+Cell[7233, 184, 3376, 71, 359, "Text",ExpressionUUID->"0400c196-7b4c-794c-bc70-c0da274af7e6"],
+Cell[10612, 257, 71, 0, 27, "Text",ExpressionUUID->"73d62128-ad4d-4098-a4a7-5b60822a149c"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10618, 267, 362, 7, 52, "Section",ExpressionUUID->"67111a7b-5613-420d-9790-f29666564624"],
-Cell[10983, 276, 444, 8, 27, "Text",ExpressionUUID->"8f100254-8088-5241-a652-74b2bb8a558e"],
-Cell[11430, 286, 151, 3, 23, "Input",ExpressionUUID->"864f8057-9f5b-9840-afef-b3c37e98e2a5"],
-Cell[11584, 291, 71, 0, 27, "Text",ExpressionUUID->"7de3e0b6-63b9-4fae-852c-489cb2516aa2"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11692, 296, 368, 8, 82, "Section",ExpressionUUID->"72901f68-2643-42f4-a340-9128ee9dff36"],
-Cell[12063, 306, 120, 3, 27, "Text",ExpressionUUID->"821b01b2-cda7-484a-82f4-1d1b37b3c589"]
+Cell[10732, 263, 362, 7, 52, "Section",ExpressionUUID->"67111a7b-5613-420d-9790-f29666564624"],
+Cell[11097, 272, 598, 12, 62, "Text",ExpressionUUID->"8f100254-8088-5241-a652-74b2bb8a558e"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12232, 315, 378, 6, 54, "Chapter",ExpressionUUID->"fc7fa6be-e29e-47e2-b3bf-5d1fa0e1e109"],
+Cell[11744, 290, 378, 6, 54, "Chapter",ExpressionUUID->"fc7fa6be-e29e-47e2-b3bf-5d1fa0e1e109"],
 Cell[CellGroupData[{
-Cell[12635, 325, 551, 10, 112, "Section",ExpressionUUID->"1f343bad-e2a9-4451-aaf4-d482856b72a7"],
-Cell[13189, 337, 368, 7, 27, "Text",ExpressionUUID->"521bec7b-8530-4042-b5cb-bf44c0f35d97"],
+Cell[12147, 300, 551, 10, 82, "Section",ExpressionUUID->"1f343bad-e2a9-4451-aaf4-d482856b72a7"],
+Cell[12701, 312, 368, 7, 27, "Text",ExpressionUUID->"521bec7b-8530-4042-b5cb-bf44c0f35d97"],
 Cell[CellGroupData[{
-Cell[13582, 348, 463, 9, 94, "Subsubsection",ExpressionUUID->"cab08ce9-5cf6-b148-a4d9-3c3308c0f666"],
-Cell[14048, 359, 71, 0, 27, "Text",ExpressionUUID->"daf7f05b-44f8-4b27-851a-fd6ee1cbf549"]
+Cell[13094, 323, 463, 9, 94, "Subsubsection",ExpressionUUID->"cab08ce9-5cf6-b148-a4d9-3c3308c0f666"],
+Cell[13560, 334, 71, 0, 27, "Text",ExpressionUUID->"daf7f05b-44f8-4b27-851a-fd6ee1cbf549"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14180, 366, 232, 4, 54, "Chapter",ExpressionUUID->"858f0904-16fc-4f20-90f9-c74284c880ad"],
+Cell[13692, 341, 232, 4, 54, "Chapter",ExpressionUUID->"858f0904-16fc-4f20-90f9-c74284c880ad"],
 Cell[CellGroupData[{
-Cell[14437, 374, 301, 4, 35, "Subsubsection",ExpressionUUID->"5ad33a47-869f-4d6b-ade0-3986b367eb1a"],
-Cell[14741, 380, 794, 18, 97, "Text",ExpressionUUID->"77e4f7b3-2323-704b-9ba2-d2053dbc08b1"]
+Cell[13949, 349, 301, 4, 35, "Subsubsection",ExpressionUUID->"5ad33a47-869f-4d6b-ade0-3986b367eb1a"],
+Cell[14253, 355, 794, 18, 97, "Text",ExpressionUUID->"77e4f7b3-2323-704b-9ba2-d2053dbc08b1"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15584, 404, 356, 6, 54, "Chapter",ExpressionUUID->"f4fb8a32-6adf-4047-be26-3acfb5f2689b"],
-Cell[15943, 412, 1393, 25, 131, "Text",ExpressionUUID->"fafda15a-f104-43ac-a5c2-bf8f9cb0cc39"]
+Cell[15096, 379, 356, 6, 54, "Chapter",ExpressionUUID->"f4fb8a32-6adf-4047-be26-3acfb5f2689b"],
+Cell[15455, 387, 1393, 25, 114, "Text",ExpressionUUID->"fafda15a-f104-43ac-a5c2-bf8f9cb0cc39"]
 }, Open  ]]
 }, Open  ]]
 }
